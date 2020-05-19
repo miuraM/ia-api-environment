@@ -6,6 +6,8 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 
 RUN set -eux && \
+  apk add --update --no-cache libxml2-dev && \
+  docker-php-ext-install soap && \
   apk add --update-cache --no-cache --virtual=.build-dependencies tzdata && \
   cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
   apk del .build-dependencies && \
