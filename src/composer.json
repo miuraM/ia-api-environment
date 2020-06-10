@@ -15,6 +15,7 @@
         "facebook/php-business-sdk": "5.0.5",
         "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
+        "googleads/google-ads-php": "^3.2",
         "googleads/googleads-php-lib": "^47.0",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "^6.0",
