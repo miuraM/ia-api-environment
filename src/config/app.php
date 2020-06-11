@@ -228,4 +228,5 @@ return [
 
     ],
 
+    'google_ads_php_path' => storage_path(env('GOOGLE_ADS_AUTH_FILE_PATH', ''))
 ];
