@@ -171,6 +171,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\FacebookServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -228,5 +229,11 @@ return [
 
     ],
 
-    'google_ads_php_path' => storage_path(env('GOOGLE_ADS_AUTH_FILE_PATH', ''))
+    'google_ads_php_path' => storage_path(env('GOOGLE_ADS_AUTH_FILE_PATH', '')),
+
+    'facebook_api' => [
+        'app_id' => env('FACEBOOK_APP_ID'),
+        'app_secret' => env('FACEBOOK_APP_SECRET'),
+        'app_access_token' => env('FACEBOOK_APP_ACCESS_TOKEN'),
+    ],
 ];
