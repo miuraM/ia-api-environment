@@ -171,6 +171,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\GoogleServiceProvider::class,
         App\Providers\FacebookServiceProvider::class,
         App\Providers\YahooServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
