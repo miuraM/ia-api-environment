@@ -29,9 +29,41 @@ composer.json
 
 ```
 "require" : {
-    "googleads/googleads-php-lib": "^47.0"
+    "googleads/google-ads-php": "^3.2"
 }
 ```
+また、このAPIを利用するためにはgRPCモジュールが必要。
+```
+# apkにパッケージが存在しなかったっためpeclからインストールを実行
+# phpizeが存在しなかったり、linux headerが足りないものがあったため合わせて実行している
+# Dockerfileにまとめて処理追加しています
+
+$ apk add linux-headers
+$ apk add --no-cache $PHPIZE_DEPS
+$ pecl install grpc
+```
+## 認証方法
+Google Ads APIを利用するために認証キーを事前に作成する。
+
+[参考ページ](https://qiita.com/komedawara_omusubi/items/71f7da499d92289f77b6)
+
+```
+; 認証ファイルのサンプル
+
+[GOOGLE_ADS]
+developerToken = "xxx"
+
+; Required for manager accounts only: Specify the login customer ID used to authenticate API calls.
+; This will be the customer ID of the authenticated manager account. You can also specify this later
+; in code if your application uses multiple manager account + OAuth pairs.
+; loginCustomerId = "INSERT_LOGIN_CUSTOMER_ID_HERE"
+[OAUTH2]
+clientId = "xxx"
+clientSecret = "xxx"
+refreshToken = "xxx"
+```
+
+
 
 # facebook marketing api
 composer.json
