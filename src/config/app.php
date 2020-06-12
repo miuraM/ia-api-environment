@@ -172,6 +172,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\FacebookServiceProvider::class,
+        App\Providers\YahooServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -236,4 +237,6 @@ return [
         'app_secret' => env('FACEBOOK_APP_SECRET'),
         'app_access_token' => env('FACEBOOK_APP_ACCESS_TOKEN'),
     ],
+
+    'yahoo_config_path' => storage_path(env('YAHOO_AUTH_FILE_PATH', '')),
 ];
