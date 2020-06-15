@@ -15,7 +15,7 @@
 # 環境構築
 cloneした後、下記のコマンドで環境構築
 
-```
+```command
 $ docker-compose up -d --build
 $ docker-compose exec app ash
 $ composer install # or composer update
@@ -27,7 +27,7 @@ laravelの初期画面が表示されていれば構築は完了
 # Google Ads Api
 composer.json
 
-```
+```json
 "require" : {
     "googleads/google-ads-php": "^3.2"
 }
@@ -47,7 +47,7 @@ Google Ads APIを利用するために認証キーを事前に作成する。
 
 [参考ページ](https://qiita.com/komedawara_omusubi/items/71f7da499d92289f77b6)
 
-```
+```ini
 ; 認証ファイルのサンプル
 
 [GOOGLE_ADS]
@@ -64,11 +64,11 @@ refreshToken = "xxx"
 ```
 
 認証ファイルをstorageディレクトリなどに置き、envで管理しconfigからファイルを指定できるように定義します
-```
+```php
 'google_ads_php_path' => storage_path(env('GOOGLE_ADS_AUTH_FILE_PATH', ''))
 ```
 予めサービスプロバイダーを追加しているので、認証までは自動で完了するようにしてあります。
-```
+```php
 <?php
 
 namespace App\Providers;
@@ -113,7 +113,7 @@ class GoogleServiceProvider extends ServiceProvider
 ```
 使用方法サンプル：
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -186,7 +186,7 @@ class SampleController extends Controller
 # facebook marketing api
 composer.json
 
-```
+```json
 "require" : {
     "facebook/php-business-sdk": "5.0.5"
 }
@@ -196,15 +196,15 @@ composer.json
 [公式ドキュメント](https://developers.facebook.com/docs/marketing-api/access)
 
 APIの認証に必要なデータは下記の通りです
-```
+```php
 'facebook_api' => [
-        'app_id' => env('FACEBOOK_APP_ID'),
-        'app_secret' => env('FACEBOOK_APP_SECRET'),
-        'app_access_token' => env('FACEBOOK_APP_ACCESS_TOKEN'),
-    ],
+    'app_id' => env('FACEBOOK_APP_ID'),
+    'app_secret' => env('FACEBOOK_APP_SECRET'),
+    'app_access_token' => env('FACEBOOK_APP_ACCESS_TOKEN'),
+],
 ```
 予めサービスプロバイダーを追加しているので、認証までは自動で完了するようにしてあります。
-```
+```php
 <?php
 
 namespace App\Providers;
@@ -244,7 +244,7 @@ class FacebookServiceProvider extends ServiceProvider
 
 ```
 使用方法サンプル：
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -289,7 +289,7 @@ openapi-generator generate -i https://yahoojp-marketing.github.io/ads-search-api
 
 composer.jsonに必要なパッケージとautoloadの設定を追加。
 先ほど移動したライブラリをautoloadで利用できるように設定しています。
-```
+```json
 "require": {
     "ext-curl": "*",
     "ext-json": "*",
@@ -307,7 +307,7 @@ composer.jsonに必要なパッケージとautoloadの設定を追加。
 認証方法は公式のドキュメントを参考にしてください
 [公式ドキュメント](https://ads-developers.yahoo.co.jp/developercenter/ja/startup-guide/)
 
-```
+```ini
 [access_token]
 accessToken=xxx
 
@@ -316,12 +316,12 @@ accountId=xxx
 ```
 
 認証ファイルをstorageディレクトリなどに置き、envで管理しconfigからファイルを指定できるように定義します
-```
+```php
 'yahoo_config_path' => storage_path(env('YAHOO_AUTH_FILE_PATH', '')),
 ```
 
 他のAPIと違い各処理（レポート操作、アカウント操作など）で認証を通すロジックとなっているため、共通の認証キーをconfigurationに設定するまでをサービスプロバイダに定義しています。
-```
+```php
 <?php
 
 namespace App\Providers;
@@ -361,7 +361,7 @@ class YahooServiceProvider extends ServiceProvider
 ```
 
 使用方法サンプル：
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
